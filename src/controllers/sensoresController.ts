@@ -12,11 +12,10 @@ const getSensores = async (req: Request, res: Response) => {
 
 const createSensores = async (req: Request, res: Response) => {
     try {
-        const { name, description } = req.body;
-        const newSensores = await addSensores(name, description);
+        const newSensores = await addSensores(req.body);
         return res.status(201).json(newSensores);
     } catch (error) {
-        return res.status(500).json({ error: 'Internal Server Error' });
+        return res.status(500).json({ error: 'Internal Server Error'+error });
     }
 };
 

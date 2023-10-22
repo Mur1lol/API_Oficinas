@@ -1,28 +1,55 @@
 
 import { Sensores } from '../entity/Sensores';
-
 import { AppDataSource } from "../data-source" // Importe a conexão correta do PostgreSQL
+
+const sensorRepository = AppDataSource.getRepository(Sensores);
 
 const getAll = async (): Promise<Sensores[]> => {
     
-    const sensorRepository = AppDataSource.getRepository(Sensores);
+    
     const sensores = await sensorRepository.find();
     return sensores;
 
 };
 
-const addSensores = async (name: string, description: string): Promise<Sensores> => {
-    const sensorRepository = AppDataSource.getRepository(Sensores);
+const addSensores = async (dados): Promise<Sensores> => {
+    console.log("Inserting a new data into the database...");
 
-    console.log("Inserting a new data into the database...")
-    const sensores = new Sensores()
-    sensores.name = "Timber"
-    sensores.description = "Saw"
-    sensores.views = 25
-    sensores.isPublished = true
+    const {
+        latitude,
+        altitude, 
+        temperatura, 
+        pressao, 
+        umidade, 
+        velocidadeVento, 
+        direcaoVento, 
+        indiceUV,
+        intensidadeLuminosa,
+        chuva,
+        volumeChuva,
+        porcentagemBaterias,
+        tensãoEletricaPlacaSolar,
+        orientacaoPlacaSolar
+    } = dados;
 
-    // await AppDataSource.manager.save(sensores)
-    // console.log("Saved a new sensores with id: " + sensores.id)
+    
+    const sensores = new Sensores();
+
+    sensores.data = new Date(Date.now()).toString(); 
+    sensores.latitude = latitude;
+    sensores.altitude = altitude; 
+    sensores.temperatura = temperatura;
+    sensores.pressao = pressao;  
+    sensores.umidade = umidade; 
+    sensores.velocidadeVento = velocidadeVento; 
+    sensores.direcaoVento = direcaoVento;
+    sensores.indiceUV = indiceUV;
+    sensores.intensidadeLuminosa = intensidadeLuminosa;
+    sensores.chuva = chuva;
+    sensores.volumeChuva = volumeChuva;
+    sensores.porcentagemBaterias = porcentagemBaterias;
+    sensores.tensãoEletricaPlacaSolar = tensãoEletricaPlacaSolar;
+    sensores.orientacaoPlacaSolar = orientacaoPlacaSolar;
 
     const createdSensores = await sensorRepository.save(sensores);
     
