@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dados da API</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Estilos CSS aqui */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Gráficos de Dados dos Sensores</h1>
+        <div class="chart-container">
+            <canvas id="temperature-chart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="humidity-chart"></canvas>
+        </div>
+        <div class="chart-container">
+            <canvas id="pressure-chart"></canvas>
+        </div>
+        <div id="chart-container">
+            <canvas id="luminosidade-chart"></canvas>
+        </div>
+        <div id="chart-container">
+            <canvas id="tensao-chart"></canvas>
+        </div>
+    </div>
+    <script>
+        function fetchAPI() {
+            fetch('http://localhost:3333/sensores')
+                .then(response => response.json())
+                .then(data => {
+                    if (Array.isArray(data)) {
+                        const dates = data.map(item => new Date(item.data));
+                        
+                        const temperatures = data.map(item => parseFloat(item.temperatura));
+                        const humidities = data.map(item => parseFloat(item.umidade));
+                        const pressures = data.map(item => parseFloat(item.pressao));
+                        const luminosidade = data.map(item => item.intensidadeLuminosa);
+                        const tensao       = data.map(item => item.tensãoEletricaPlacaSolar);
+
+                        createChart('temperature-chart', 'Temperatura (°C)', dates, temperatures, 'rgba(75, 192, 192, 1)');
+                        createChart('humidity-chart', 'Umidade (%)', dates, humidities, 'rgba(192, 75, 75, 1)');
+                        createChart('pressure-chart', 'Pressão (%)', dates, pressures, 'rgba(0, 213, 255, 0.5)');
+                        createChart('luminosidade-chart', 'Instensidade Luminosa (%)', dates, luminosidade, 'rgba(75, 0, 192, 1)');
+                        createChart('tensao-chart', 'Tensão Elétrica - Placa Solar', dates, tensao, 'rgba(140, 192, 192, 1)');
+                    } else {
+                        console.error('Os dados da API estão vazios ou em um formato inesperado.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar dados da API:', error);
+                });
+        }
+
+        function createChart(canvasId, label, labels, data) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        fetchAPI();
+    </script>
+</body>
+</html>
