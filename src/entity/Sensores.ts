@@ -10,48 +10,48 @@ export class Sensores {
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     latitude: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     altitude: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     temperatura: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     pressao: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     umidade: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     velocidadeVento: number
@@ -64,16 +64,16 @@ export class Sensores {
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     indiceUV: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     intensidadeLuminosa: number
@@ -86,24 +86,24 @@ export class Sensores {
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     volumeChuva: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     porcentagemBaterias: number
 
     @Column({ 
         type: 'decimal', 
-        precision: 5, 
-        scale: 4, 
+        precision: 10, 
+        scale: 2, 
         default: 0, 
     })
     tensãoEletricaPlacaSolar: number
