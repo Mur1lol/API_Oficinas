@@ -6,13 +6,13 @@ import { config } from 'dotenv';
 config(); // Carregar variáveis de ambiente a partir do arquivo .env
 
 const AppDataSource = new DataSource({
-    type: "postgres",
+    type: "mysql",
     
-    host: process.env.PG_HOST,
-    port: parseInt(process.env.PG_PORT),
-    username: process.env.PG_USER,
-    password: process.env.PG_PASSWORD,
-    database: process.env.PG_DATABASE,
+    host: process.env.MYSQL_HOST,
+    port: parseInt(process.env.MYSQL_PORT),
+    username: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 
     synchronize: true,
     logging: false,

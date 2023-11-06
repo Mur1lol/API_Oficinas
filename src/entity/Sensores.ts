@@ -17,7 +17,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    latitude: number
+    latitude: number;
 
     @Column({ 
         type: 'decimal', 
@@ -25,7 +25,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    altitude: number
+    altitude: number;
 
     @Column({ 
         type: 'decimal', 
@@ -33,7 +33,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    temperatura: number
+    temperatura: number;
 
     @Column({ 
         type: 'decimal', 
@@ -41,7 +41,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    pressao: number
+    pressao: number;
 
     @Column({ 
         type: 'decimal', 
@@ -49,7 +49,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    umidade: number
+    umidade: number;
 
     @Column({ 
         type: 'decimal', 
@@ -57,13 +57,13 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    velocidadeVento: number
+    velocidadeVento: number;
 
     @Column({
         type: 'varchar',
         default: 'N'
     })
-    direcaoVento: string
+    direcaoVento: string;
 
     @Column({ 
         type: 'decimal', 
@@ -71,7 +71,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    indiceUV: number
+    indiceUV: number;
 
     @Column({ 
         type: 'decimal', 
@@ -79,13 +79,13 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    intensidadeLuminosa: number
+    intensidadeLuminosa: number;
 
     @Column({
         type: 'bool',
         default: false
     })
-    chuva: boolean
+    chuva: boolean;
 
     @Column({ 
         type: 'decimal', 
@@ -93,7 +93,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    volumeChuva: number
+    volumeChuva: number;
 
     @Column({ 
         type: 'decimal', 
@@ -101,7 +101,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    porcentagemBaterias: number
+    porcentagemBaterias: number;
 
     @Column({ 
         type: 'decimal', 
@@ -109,11 +109,11 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    tensãoEletricaPlacaSolar: number
+    tensãoEletricaPlacaSolar: number;
 
     @Column({
         type: 'varchar',
         default: 'N'
     })
-    orientacaoPlacaSolar: string
+    orientacaoPlacaSolar: string;
 }
