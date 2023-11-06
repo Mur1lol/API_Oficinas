@@ -1,9 +1,19 @@
 import { Request, Response } from 'express';
-import { getAll, addSensores } from '../models/sensoresModel';
+import { getAll, addSensores, getLast } from '../models/sensoresModel';
 
 const getSensores = async (req: Request, res: Response) => {
     try {
         const sensores = await getAll();
+        return res.status(200).json(sensores);
+    } catch (error) {
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+const getLastSensores = async (req: Request, res: Response) => {
+    try {
+        const { number } = req.params;
+        const sensores = await getLast(number);
         return res.status(200).json(sensores);
     } catch (error) {
         return res.status(500).json({ error: 'Internal Server Error' });
@@ -19,4 +29,4 @@ const createSensores = async (req: Request, res: Response) => {
     }
 };
 
-export { getSensores, createSensores };
+export { getSensores, getLastSensores, createSensores };

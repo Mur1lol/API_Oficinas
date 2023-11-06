@@ -1,15 +1,24 @@
 
 import { Sensores } from '../entity/Sensores';
 import { AppDataSource } from "../data-source" // Importe a conexão correta do PostgreSQL
+import moment = require('moment');
 
 const sensorRepository = AppDataSource.getRepository(Sensores);
 
 const getAll = async (): Promise<Sensores[]> => {
-    
-    
     const sensores = await sensorRepository.find();
     return sensores;
+};
 
+const getLast = async (number): Promise<Sensores[]> => {
+    const sensores = await sensorRepository
+        .createQueryBuilder("sensor")
+        .where("sensor.data = to_char(NOW(), 'DD/MM/YYYY')")
+        .orderBy("sensor.id", "DESC")
+        .take(number)
+        .getMany();
+        
+    return sensores;
 };
 
 const addSensores = async (dados): Promise<Sensores> => {
@@ -35,7 +44,11 @@ const addSensores = async (dados): Promise<Sensores> => {
     
     const sensores = new Sensores();
 
-    sensores.data = new Date(Date.now()).toString(); 
+    moment.locale('pt-br');
+
+    //sensores.data = new Date(Date.now());
+    sensores.data = moment().format('L'); 
+    sensores.hora = moment().format('LT');
     sensores.latitude = latitude;
     sensores.altitude = altitude; 
     sensores.temperatura = temperatura;
@@ -59,5 +72,6 @@ const addSensores = async (dados): Promise<Sensores> => {
 
 export {
     getAll,
+    getLast,
     addSensores,
 };

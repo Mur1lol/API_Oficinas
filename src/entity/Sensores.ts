@@ -8,6 +8,9 @@ export class Sensores {
     @Column({ type: 'varchar' })
     data: string;
 
+    @Column({ type: 'varchar' })
+    hora: string;
+
     @Column({ 
         type: 'decimal', 
         precision: 10, 
