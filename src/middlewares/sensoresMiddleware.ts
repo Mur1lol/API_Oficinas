@@ -6,6 +6,9 @@ const validateBody = (req: Request, res: Response, next: NextFunction) => {
     if (body.latitude === undefined || body.latitude === '') {
         return res.status(400).json({ message: 'The field "latitude" is required and cannot be empty' });
     }
+    if (body.longitude === undefined || body.longitude === '') {
+        return res.status(400).json({ message: 'The field "longitude" is required and cannot be empty' });
+    }
     if (body.altitude === undefined || body.altitude === '') {
         return res.status(400).json({ message: 'The field "altitude" is required and cannot be empty' });
     }

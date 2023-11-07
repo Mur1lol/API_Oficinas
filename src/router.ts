@@ -11,6 +11,9 @@ import * as sensoresMiddleware from './middlewares/sensoresMiddleware';
 // Retorna todos os dados
 router.get('/sensores', sensoresController.getSensores);
 
+// Retorna todos os dados da data atual
+router.get('/sensores/today', sensoresController.getTodaySensores);
+
 // Retorna ultimos dados de acordo com o number passado
 router.get('/sensores/:number', sensoresController.getLastSensores);
 

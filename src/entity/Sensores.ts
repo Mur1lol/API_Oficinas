@@ -25,6 +25,14 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
+    longitude: number;
+
+    @Column({ 
+        type: 'decimal', 
+        precision: 10, 
+        scale: 2, 
+        default: 0, 
+    })
     altitude: number;
 
     @Column({ 

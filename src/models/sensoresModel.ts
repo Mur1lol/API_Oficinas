@@ -13,9 +13,19 @@ const getAll = async (): Promise<Sensores[]> => {
 const getLast = async (number): Promise<Sensores[]> => {
     const sensores = await sensorRepository
         .createQueryBuilder("sensor")
-        .where("sensor.data = to_char(NOW(), 'DD/MM/YYYY')")
+        //.where("sensor.data = to_char(NOW(), 'DD/MM/YYYY')")
         .orderBy("sensor.id", "DESC")
         .take(number)
+        .getMany();
+        
+    return sensores;
+};
+
+const getToday = async (): Promise<Sensores[]> => {
+    const sensores = await sensorRepository
+        .createQueryBuilder("sensor")
+        .where("sensor.data = to_char(NOW(), 'DD/MM/YYYY')")
+        .orderBy("sensor.id", "ASC")
         .getMany();
         
     return sensores;
@@ -26,6 +36,7 @@ const addSensores = async (dados): Promise<Sensores> => {
 
     const {
         latitude,
+        longitude,
         altitude, 
         temperatura, 
         pressao, 
@@ -50,6 +61,7 @@ const addSensores = async (dados): Promise<Sensores> => {
     sensores.data = moment().format('L'); 
     sensores.hora = moment().format('LT');
     sensores.latitude = latitude;
+    sensores.longitude = longitude;
     sensores.altitude = altitude; 
     sensores.temperatura = temperatura;
     sensores.pressao = pressao;  
@@ -73,5 +85,6 @@ const addSensores = async (dados): Promise<Sensores> => {
 export {
     getAll,
     getLast,
+    getToday,
     addSensores,
 };
