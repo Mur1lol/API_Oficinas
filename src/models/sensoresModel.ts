@@ -1,7 +1,6 @@
 
 import { Sensores } from '../entity/Sensores';
 import { AppDataSource } from "../data-source" // Importe a conexão correta do PostgreSQL
-import moment = require('moment');
 
 const sensorRepository = AppDataSource.getRepository(Sensores);
 
@@ -55,11 +54,12 @@ const addSensores = async (dados): Promise<Sensores> => {
     
     const sensores = new Sensores();
 
-    moment.locale('pt-br');
-
-    //sensores.data = new Date(Date.now());
-    sensores.data = moment().format('L'); 
-    sensores.hora = moment().format('LT');
+    sensores.data = new Date().toLocaleDateString("pt-br");
+    sensores.hora = new Date().toLocaleTimeString("pt-br", {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: false,
+    });
     sensores.latitude = latitude;
     sensores.longitude = longitude;
     sensores.altitude = altitude; 
