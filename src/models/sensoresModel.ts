@@ -54,8 +54,11 @@ const addSensores = async (dados): Promise<Sensores> => {
     
     const sensores = new Sensores();
 
-    sensores.data = new Date().toLocaleDateString("pt-br");
-    sensores.hora = new Date().toLocaleTimeString("pt-br", {
+    const date = new Date();
+    date.setHours(date.getHours() -3);
+
+    sensores.data = date.toLocaleDateString("pt-br");
+    sensores.hora = date.toLocaleTimeString("pt-br", {
         hour: "numeric",
         minute: "numeric",
         hour12: false,
