@@ -47,7 +47,7 @@ const addSensores = async (dados): Promise<Sensores> => {
         chuva,
         volumeChuva,
         porcentagemBaterias,
-        tensãoEletricaPlacaSolar,
+        tensaoEletricaPlacaSolar,
         orientacaoPlacaSolar
     } = dados;
 
@@ -73,7 +73,7 @@ const addSensores = async (dados): Promise<Sensores> => {
     sensores.chuva = chuva;
     sensores.volumeChuva = volumeChuva;
     sensores.porcentagemBaterias = porcentagemBaterias;
-    sensores.tensãoEletricaPlacaSolar = tensãoEletricaPlacaSolar;
+    sensores.tensaoEletricaPlacaSolar = tensaoEletricaPlacaSolar;
     sensores.orientacaoPlacaSolar = orientacaoPlacaSolar;
 
     const createdSensores = await sensorRepository.save(sensores);

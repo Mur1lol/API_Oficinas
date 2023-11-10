@@ -117,7 +117,7 @@ export class Sensores {
         scale: 2, 
         default: 0, 
     })
-    tensãoEletricaPlacaSolar: number;
+    tensaoEletricaPlacaSolar: number;
 
     @Column({
         type: 'varchar',

@@ -42,8 +42,8 @@ const validateBody = (req: Request, res: Response, next: NextFunction) => {
     if (body.porcentagemBaterias === undefined || body.porcentagemBaterias === '') {
         return res.status(400).json({ message: 'The field "porcentagemBaterias" is required and cannot be empty' });
     }
-    if (body.tensãoEletricaPlacaSolar === undefined || body.tensãoEletricaPlacaSolar === '') {
-        return res.status(400).json({ message: 'The field "tensãoEletricaPlacaSolar" is required and cannot be empty' });
+    if (body.tensaoEletricaPlacaSolar === undefined || body.tensaoEletricaPlacaSolar === '') {
+        return res.status(400).json({ message: 'The field "tensaoEletricaPlacaSolar" is required and cannot be empty' });
     }
     if (body.orientacaoPlacaSolar === undefined || body.orientacaoPlacaSolar === '') {
         return res.status(400).json({ message: 'The field "orientacaoPlacaSolar" is required and cannot be empty' });
