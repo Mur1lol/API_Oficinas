@@ -12,57 +12,43 @@ export class Sensores {
     hora: string;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     latitude: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     longitude: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     altitude: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     temperatura: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     pressao: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     umidade: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     velocidadeVento: number;
@@ -74,17 +60,13 @@ export class Sensores {
     direcaoVento: string;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     indiceUV: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     intensidadeLuminosa: number;
@@ -96,25 +78,19 @@ export class Sensores {
     chuva: boolean;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     volumeChuva: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     porcentagemBaterias: number;
 
     @Column({ 
-        type: 'decimal', 
-        precision: 10, 
-        scale: 2, 
+        type: 'double precision', 
         default: 0, 
     })
     tensaoEletricaPlacaSolar: number;
